@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Tmdb from "./Tmdb";
+import { getHomeList, getMovieInfo } from "./Tmdb";
 
 import "./services/styles/global.css";
 
@@ -37,7 +37,7 @@ export default function App() {
 
     const GetAllMovies = async () => {
       //Get List Movies in TMDB API
-      const ListMovies = await Tmdb.getHomeList();
+      const ListMovies = await getHomeList();
       setMovieList(ListMovies);
 
       // Filter only Originals netflix
@@ -52,7 +52,7 @@ export default function App() {
       let selectedMovieFeature = originals[0].items.results[randomMovie];
 
       if (selectedMovieFeature.id) {
-        const CompleteInfoMovie = await Tmdb.getMovieInfo(
+        const CompleteInfoMovie = await getMovieInfo(
           selectedMovieFeature.id,
           "tv"
         );

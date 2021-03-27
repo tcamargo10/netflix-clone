@@ -8,8 +8,7 @@ const basicFetch = async (endpoint) => {
   return req.json();
 };
 
-export default {
-  getHomeList: async () => {
+async function getHomeList(){
     return [
       {
         slug: "trending",
@@ -68,8 +67,9 @@ export default {
         ),
       },
     ];
-  },
-  getMovieInfo: async (movieId, type) => {
+  }
+
+  async function getMovieInfo(movieId, type){
     let info = {};
 
     if (movieId) {
@@ -91,5 +91,6 @@ export default {
     }
 
     return info;
-  },
-};
+  }
+
+  export { getHomeList, getMovieInfo };
