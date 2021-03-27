@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import Tmdb from "./Tmdb";
 
-function App() {
+import "./services/styles/global.css";
+
+import CategoryList from "./components/CategoryList.js";
+
+export default function App() {
+  const [movieList, setMovieList] = useState([]);
+  useEffect(() => {
+    const loadAll = async () => {
+      setMovieList(await Tmdb.getHomeList());
+    };
+
+    loadAll();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      {movieList.map((category, index) => (
+        <CategoryList key={index} listMovies={category} />
+      ))}
+    </Container>
   );
 }
 
-export default App;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+`;
