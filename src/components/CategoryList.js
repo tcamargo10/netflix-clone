@@ -36,6 +36,10 @@ const TitleCategory = styled.h2`
   text-decoration: none;
   display: inline-block;
   min-width: 6em;
+
+  @media (max-width: 900px) {
+    font-size: 23px;
+  }
 `;
 
 const ContainerImage = styled.div`

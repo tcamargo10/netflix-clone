@@ -24,4 +24,9 @@ const ContainerButton = styled.a`
   :hover {
     opacity: 0.7;
   }
+
+  @media (max-width: 600px) {
+    font-size: 17px;
+    padding: 11px 22px;
+  }
 `;

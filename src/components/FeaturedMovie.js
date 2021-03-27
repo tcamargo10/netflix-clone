@@ -72,6 +72,15 @@ const TitleMovie = styled.div`
   font-size: 60px;
   font-weight: bold;
   max-width: 50%;
+
+  @media (max-width: 900px) {
+    font-size: 40px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 25px;
+    max-width: 100%;
+  }
 `;
 
 const AreaInfo = styled.div`
@@ -79,6 +88,10 @@ const AreaInfo = styled.div`
   font-size: 18px;
   font-weight: bold;
   margin-top: 15px;
+
+  @media (max-width: 900px) {
+    font-size: 14px;
+  }
 `;
 
 const Points = styled.div`
@@ -101,6 +114,18 @@ const Description = styled.div`
   font-size: 20px;
   color: #999;
   max-width: 40%;
+  max-height: 20%;
+  overflow-y: hidden;
+
+  @media (max-width: 1000px) {
+    max-width: 70%;
+    font-size: 18px;
+  }
+
+  @media (max-width: 600px) {
+    max-width: 100%;
+    font-size: 17px;
+  }
 `;
 
 const AreaButtons = styled.div`
@@ -116,4 +141,8 @@ const AreaGenres = styled.div`
 const Genres = styled.p`
   font-size: 15px;
   color: #999;
+
+  @media (max-width: 900px) {
+    font-size: 14px;
+  }
 `;

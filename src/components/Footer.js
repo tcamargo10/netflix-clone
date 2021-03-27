@@ -23,4 +23,8 @@ const Text = styled.h3`
   color: white;
   font-size: 16px;
   line-height: 22px;
+
+  @media (max-width: 900px) {
+    font-size: 13px;
+  }
 `;

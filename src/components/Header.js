@@ -38,12 +38,12 @@ const Container = styled.div`
 `;
 
 const AreaLogo = styled.div`
-  height: 75px;
+  height: 60px;
   margin-left: -10px;
 `;
 
 const AreaUser = styled.div`
-  height: 40px;
+  height: 35px;
   border-radius: 100px;
   background-color: red;
 `;
