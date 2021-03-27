@@ -4,6 +4,7 @@ import Tmdb from "./Tmdb";
 
 import "./services/styles/global.css";
 
+import Header from "./components/Header.js";
 import CategoryList from "./components/CategoryList.js";
 import FeaturedMovie from "./components/FeaturedMovie.js";
 import Loading from "./components/Loading.js";
@@ -12,6 +13,23 @@ export default function App() {
   const [movieList, setMovieList] = useState([]);
   const [featuredMovie, setFeaturedMovie] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [blackHeader, setBlackHeader] = useState(false);
+
+  useEffect(() => {
+    const scrollListener = () => {
+      if (window.scrollY > 10) {
+        setBlackHeader(true);
+      } else {
+        setBlackHeader(false);
+      }
+    };
+
+    window.addEventListener("scroll", scrollListener);
+
+    return () => {
+      window.removeEventListener("scroll", scrollListener);
+    };
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -52,6 +70,8 @@ export default function App() {
 
   return (
     <Container>
+      <Header blackHeader={blackHeader} />
+
       <FeaturedMovie item={featuredMovie} />
 
       <CategoriesList>
