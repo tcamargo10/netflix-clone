@@ -25,14 +25,14 @@ export default function CategoryList({ listMovies }) {
 }
 
 const Container = styled.div`
-  margin: 2.5vw 0px;
+  margin-bottom: 3vw;
 `;
 
 const TitleCategory = styled.h2`
   font-size: 1.8vw;
   color: #e5e5e5;
   font-weight: 700;
-  margin: 0 4% 0.5em 4%;
+  margin: 20px 30px;
   text-decoration: none;
   display: inline-block;
   min-width: 6em;
@@ -42,7 +42,7 @@ const ContainerImage = styled.div`
   display: flex;
   width: 94vw;
   padding: 0px 2px;
-  margin: 0 4% 0.5em 4%;
+  margin-left: 30px;
   overflow-x: scroll;
 
   -ms-overflow-style: none; /* IE and Edge */
