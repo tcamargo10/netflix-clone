@@ -12,13 +12,6 @@ export default {
   getHomeList: async () => {
     return [
       {
-        slug: "originals",
-        title: "Originais do Nexflix",
-        items: await basicFetch(
-          `/discover/tv?with_network=213&language=${language}&api_key=${API_KEY}`
-        ),
-      },
-      {
         slug: "trending",
         title: "Recomendados para Você",
         items: await basicFetch(
@@ -30,6 +23,13 @@ export default {
         title: "Em Alta",
         items: await basicFetch(
           `/movie/top_rated?language=${language}&api_key=${API_KEY}`
+        ),
+      },
+      {
+        slug: "originals",
+        title: "Originais do Nexflix",
+        items: await basicFetch(
+          `/discover/tv?with_network=213&language=${language}&api_key=${API_KEY}`
         ),
       },
       {
@@ -68,5 +68,28 @@ export default {
         ),
       },
     ];
+  },
+  getMovieInfo: async (movieId, type) => {
+    let info = {};
+
+    if (movieId) {
+      switch (type) {
+        case "movie":
+          info = await basicFetch(
+            `/movie/${movieId}?language=${language}&api_key=${API_KEY}`
+          );
+          break;
+        case "tv":
+          info = await basicFetch(
+            `/tv/${movieId}?language=${language}&api_key=${API_KEY}`
+          );
+          break;
+        default:
+          info = null;
+          break;
+      }
+    }
+
+    return info;
   },
 };

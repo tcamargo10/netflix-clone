@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export default function CategoryList({ listMovies }) {
+  const normalSize = "w300";
+  const OriginalSize = "w500";
+
   return (
     <Container>
       <TitleCategory>{listMovies.title}</TitleCategory>
@@ -8,8 +11,11 @@ export default function CategoryList({ listMovies }) {
       <ContainerImage>
         {listMovies.items.results.map((movie, index) => (
           <BannerMovie
+            size={listMovies.slug === "originals" ? "500px" : null}
             key={index}
-            src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+            src={`https://image.tmdb.org/t/p/${
+              listMovies.slug === "originals" ? OriginalSize : normalSize
+            }${movie.poster_path}`}
             alt={movie.name}
           />
         ))}
@@ -19,11 +25,11 @@ export default function CategoryList({ listMovies }) {
 }
 
 const Container = styled.div`
-  margin: 3vw 0px;
+  margin: 2.5vw 0px;
 `;
 
 const TitleCategory = styled.h2`
-  font-size: 1.4vw;
+  font-size: 1.8vw;
   color: #e5e5e5;
   font-weight: 700;
   margin: 0 4% 0.5em 4%;
@@ -49,9 +55,15 @@ const ContainerImage = styled.div`
 `;
 
 const BannerMovie = styled.img`
-  height: 300px;
-  width: 200px;
-  margin-right: 10px;
+  height: ${(props) => props.size || "300px"};
+  width: ${(props) => props.size || "200px"};
   object-fit: cover;
   border-radius: 5px;
+  transform: scale(0.9);
+  transition: all ease 0.2s;
+  cursor: pointer;
+
+  :hover {
+    transform: scale(1);
+  }
 `;
