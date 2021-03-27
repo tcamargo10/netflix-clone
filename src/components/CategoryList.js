@@ -7,7 +7,11 @@ export default function CategoryList({ listMovies }) {
 
       <ContainerImage>
         {listMovies.items.results.map((movie, index) => (
-          <BannerMovie key={index} src={movie.poster_path} />
+          <BannerMovie
+            key={index}
+            src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+            alt={movie.name}
+          />
         ))}
       </ContainerImage>
     </Container>
@@ -30,15 +34,24 @@ const TitleCategory = styled.h2`
 
 const ContainerImage = styled.div`
   display: flex;
-  width: 100%;
+  width: 94vw;
   padding: 0px 2px;
-  border-radius: 5px;
   margin: 0 4% 0.5em 4%;
+  overflow-x: scroll;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  /* Chrome */
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
-const BannerMovie = styled.image`
-  height: 140px;
-  width: 250px;
+const BannerMovie = styled.img`
+  height: 300px;
+  width: 200px;
   margin-right: 10px;
-  border: 1px solid #ddd;
+  object-fit: cover;
+  border-radius: 5px;
 `;
