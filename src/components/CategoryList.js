@@ -6,15 +6,25 @@ export default function CategoryList({ listMovies }) {
   const normalSize = "w300";
   const OriginalSize = "w500";
 
+  const LeftClick = () => {};
+
+  const RightClick = () => {};
+
   return (
     <Container>
       <TitleCategory>{listMovies.title}</TitleCategory>
 
-      <ButtonLeft size={listMovies.slug === "originals" ? "500px" : null}>
+      <ButtonLeft
+        onClick={LeftClick}
+        size={listMovies.slug === "originals" ? "500px" : null}
+      >
         <NavigateBeforeIcon style={{ fontSize: 50 }} />
       </ButtonLeft>
 
-      <ButtonRight size={listMovies.slug === "originals" ? "500px" : null}>
+      <ButtonRight
+        onClick={RightClick}
+        size={listMovies.slug === "originals" ? "500px" : null}
+      >
         <NavigateNextIcon style={{ fontSize: 50 }} />
       </ButtonRight>
 
@@ -52,6 +62,24 @@ const TitleCategory = styled.h2`
   }
 `;
 
+const ButtonDefault = styled.div`
+  position: absolute;
+  color: white;
+  height: ${(props) => props.size || "300px"};
+  width: 40px;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
 const ContainerImage = styled.div`
   display: flex;
   width: 94vw;
@@ -79,24 +107,6 @@ const BannerMovie = styled.img`
 
   :hover {
     transform: scale(1);
-  }
-`;
-
-const ButtonDefault = styled.div`
-  position: absolute;
-  color: white;
-  height: ${(props) => props.size || "300px"};
-  width: 40px;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 99;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-
-  &:hover {
-    opacity: 1;
   }
 `;
 
