@@ -29,10 +29,10 @@ const Container = styled.div`
 `;
 
 const TitleCategory = styled.h2`
-  font-size: 1.8vw;
+  font-size: 1.8rem;
   color: #e5e5e5;
   font-weight: 700;
-  margin: 20px 30px;
+  margin: 10px 30px;
   text-decoration: none;
   display: inline-block;
   min-width: 6em;

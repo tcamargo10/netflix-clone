@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function Loading() {
   return (
     <Container>
-      <Text>..Carregando</Text>
+      <Text>...Carregando</Text>
     </Container>
   );
 }

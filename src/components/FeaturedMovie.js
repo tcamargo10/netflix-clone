@@ -42,17 +42,13 @@ export default function FeaturedMovie({ item }) {
 
 const Container = styled.div`
   display: flex;
-  height: 70vh;
+  height: 100vh;
   width: 100%;
   background-size: cover;
   background-position: center;
   color: white;
   background-image: ${(props) =>
     `url(https://image.tmdb.org/t/p/original${props.image})`};
-
-  @media (min-width: 1300px) {
-    height: 85vh;
-  }
 `;
 
 const BoxShadownVertical = styled.div`
@@ -66,14 +62,16 @@ const BoxShadownHorizontal = styled.div`
   height: inherit;
   background: linear-gradient(to right, #111 30%, transparent 70%);
   padding-left: 30px;
+  padding-bottom: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 
-const TitleMovie = styled.h1`
+const TitleMovie = styled.div`
   font-size: 60px;
   font-weight: bold;
+  max-width: 50%;
 `;
 
 const AreaInfo = styled.div`

@@ -31,11 +31,14 @@ export default function App() {
 
       // Get Details for selected Movie
       let selectedMovieFeature = originals[0].items.results[randomMovie];
-      const CompleteInfoMovie = await Tmdb.getMovieInfo(
-        selectedMovieFeature.id,
-        "tv"
-      );
-      setFeaturedMovie(CompleteInfoMovie);
+
+      if (selectedMovieFeature.id) {
+        const CompleteInfoMovie = await Tmdb.getMovieInfo(
+          selectedMovieFeature.id,
+          "tv"
+        );
+        setFeaturedMovie(CompleteInfoMovie);
+      }
 
       setLoading(false);
     };
@@ -51,9 +54,11 @@ export default function App() {
     <Container>
       <FeaturedMovie item={featuredMovie} />
 
-      {movieList.map((category, index) => (
-        <CategoryList key={index} listMovies={category} />
-      ))}
+      <CategoriesList>
+        {movieList.map((category, index) => (
+          <CategoryList key={index} listMovies={category} />
+        ))}
+      </CategoriesList>
     </Container>
   );
 }
@@ -62,4 +67,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+`;
+
+const CategoriesList = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: -160px;
 `;
