@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
 export default function CategoryList({ listMovies }) {
   const normalSize = "w300";
@@ -7,6 +9,14 @@ export default function CategoryList({ listMovies }) {
   return (
     <Container>
       <TitleCategory>{listMovies.title}</TitleCategory>
+
+      <ButtonLeft size={listMovies.slug === "originals" ? "500px" : null}>
+        <NavigateBeforeIcon style={{ fontSize: 50 }} />
+      </ButtonLeft>
+
+      <ButtonRight size={listMovies.slug === "originals" ? "500px" : null}>
+        <NavigateNextIcon style={{ fontSize: 50 }} />
+      </ButtonRight>
 
       <ContainerImage>
         {listMovies.items.results.map((movie, index) => (
@@ -70,4 +80,30 @@ const BannerMovie = styled.img`
   :hover {
     transform: scale(1);
   }
+`;
+
+const ButtonDefault = styled.div`
+  position: absolute;
+  color: white;
+  height: ${(props) => props.size || "300px"};
+  width: 40px;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const ButtonLeft = styled(ButtonDefault)`
+  left: 0;
+`;
+
+const ButtonRight = styled(ButtonDefault)`
+  right: 0;
 `;
