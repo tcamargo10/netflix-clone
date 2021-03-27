@@ -5,6 +5,7 @@ import Tmdb from "./Tmdb";
 import "./services/styles/global.css";
 
 import Header from "./components/Header.js";
+import Footer from "./components/Footer.js";
 import CategoryList from "./components/CategoryList.js";
 import FeaturedMovie from "./components/FeaturedMovie.js";
 import Loading from "./components/Loading.js";
@@ -79,6 +80,8 @@ export default function App() {
           <CategoryList key={index} listMovies={category} />
         ))}
       </CategoriesList>
+
+      <Footer />
     </Container>
   );
 }
